@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Thymeleaf in action</title>
+</head>
+
+<body style="background-color: rgb(114, 146, 235);">
+<div align = "center"style="margin: 50px 38%;margin-top:150px;background-color:rgb(167, 182, 224">
+  <h3 style="padding-top:50px;">新闻浏览系统</h3>
+  <P style="padding-top:30px;margin-right:60%;"><strong>用户名：</strong><span th:text="${author}"></span></P>
+  <table style="padding-top:30px;">    <thead>
+    <tr align = "center" >
+      <th>title</th>
+      <th>createTime</th>
+      <th>updateTime</th>
+      <th>author</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr  align = "center" style="padding-top:30px;"  th:if="${news.size()} eq 0">
+      <td colspan="3">该作者没有新闻作品！</td>
+    </tr>
+
+    <!--each来进行for循环求值-->
+    <tr  th:each="n: ${news}">
+      <td><a th:href="@{'/New/look/'+${n.title}}" th:text ="${n.title}"></a></td>
+      <td th:text="${#dates.format(n.createTime,'yyyy-MM-dd HH:mm')}"></td>
+      <td th:text="${#dates.format(n.updateTime,'yyyy-MM-dd HH:mm')}"></td>
+      <td th:text="${n.author}"></td>
+    </tr>
+    </tbody>
+  </table>
+<div align="center" style="margin-top:30px;padding-bottom:20px">
+	<a  href="../main" >返回</a>
+</div>
+</div>
+</body>
+
+</html>
