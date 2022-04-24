@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="background-color: rgb(114, 146, 235);">
+<div id="app" align="center" style="margin: 20px 40%;margin-top:100px;background-color:rgb(167, 182, 224)">
+    <h3 style="padding-top:50px;">新闻浏览系统</h3>
+    <p style="padding-top:20px;padding-bottom: 20px;">欢迎登录，<span th:text="${user.username}"></span>！
+    <a href="./New/main">进入首页</a></p>
+    <a href="./User/logout">退出登录</a>
+</div>
+</body>
+</html>

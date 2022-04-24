@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Thymeleaf in action</title>
+</head>
+
+
+<body style="background-color: rgb(114, 146, 235);">
+<div id="app" align = "center" style="margin: 50px 38%;padding-top:20px;background-color:rgb(167, 182, 224) ">
+  <div class="jumbotron">
+    <h2>Error</h2>
+    <p>请求路径: <code th:text="${url}"></code></p>
+    <p>错误信息: <code th:text="${exception.message}"></code></p>
+    <p align="center" style="padding-bottom:30px;"><a th:href="${url}">返回</a></p>
+  </div>
+
+  <!--堆栈信息让工作人员通过查看源码查看，不显示在页面上-->
+  <div th:utext="'&lt;!--'" th:remove="tag"></div>
+  <div th:utext="'Failed Request URL: '+${url}" th:remove="tag"></div>
+  <div th:utext="'Exception message: '+${exception.message}" th:remove="tag"></div>
+  <ul th:remove="tag">
+    <li th:each="st: ${exception.stackTrace}" th:remove="tag">
+      <span th:utext="${st}" th:remove="tag"></span>
+    </li>
+  </ul>
+  <div th:utext="'--&gt;'" th:remove="tag"></div>
+
+
+</div>
+
+</body>
+</html>
